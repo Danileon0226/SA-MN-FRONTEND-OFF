@@ -1,0 +1,84 @@
+/* Estilos para el fondo */
+.background {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ajustamos la altura para cubrir toda la pantalla */
+  margin: 0; /* Eliminamos el margen predeterminado */
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.login-form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%; /* Para que el formulario sea más responsivo en dispositivos pequeños */
+}
+
+.login-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px; /* Tamaño de fuente más grande */
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555; /* Cambiamos el color para que sea menos oscuro */
+  font-weight: bold; /* Hacemos el texto más oscuro */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px; /* Aumentamos el relleno para un aspecto más atractivo */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.login-form button {
+  background-color: #195bb1;
+  color: #fff;
+  border: none;
+  padding: 12px 20px; /* Ajustamos el relleno vertical para que sea más uniforme */
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold; /* Hacemos el texto más oscuro */
+  transition: background-color 0.2s; /* Agregamos una transición suave */
+}
+
+.login-form button:hover {
+  background-color: #154d96;
+}
+
+.login-form .social {
+  margin-top: 20px;
+  text-align: center; /* Centramos los iconos sociales */
+}
+
+.login-form .social div {
+  margin-bottom: 8px;
+}
+
+.login-form .social a {
+  color: #333;
+  text-decoration: none;
+  display: inline-block; /* Alineamos horizontalmente los iconos sociales */
+  margin: 0 10px; /* Añadimos un margen entre los iconos */
+}
+
+.login-form .social a:hover {
+  text-decoration: underline;
+}
+
+.login-form p {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #777; /* Cambiamos el color para que sea menos oscuro */
+}

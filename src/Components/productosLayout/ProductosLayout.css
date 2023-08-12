@@ -1,0 +1,129 @@
+.ProductosLayout{
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.ProductosForm{
+    background-color: white;
+    height: 80vh;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.closeDiv{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.closeDiv > button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.closeDiv > button > img{
+    width: 30px;
+}
+
+.ProductosContainer{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: center;
+}
+
+
+.ProductosContainer > .productoCard{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background: #927cff87;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
+.ProductosContainer > .productoCard:hover{
+    background: #6858b687;
+}
+
+.ProductosContainer > .productoCard > .ImgProductContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7px;
+}
+
+.ProductosContainer > .productoCard > .ImgProductContainer >  img{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.NombreProducto{
+    font-weight: bold;
+    color: var(--parrafos);
+}
+
+.EnInventario{
+    color: var(--parrafos);
+}
+
+
+.LayoutControles{
+    height: 40px;
+    display: flex;
+    justify-content: end;
+}
+
+.LayoutControles > button{ 
+    border: none;
+    border-radius: 6px;
+    background-color: var(--botones);
+    color: white;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.LayoutControles > button:disabled{ 
+    border: none;
+    border-radius: 6px;
+    background-color: #8c76fb;
+    color: rgb(193, 193, 193);
+    padding: 0 10px;
+    cursor: initial;
+}
+
+.ProductosContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ProductosContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ProductosContainer::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 4px;
+}
+
+.ProductosContainer::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}

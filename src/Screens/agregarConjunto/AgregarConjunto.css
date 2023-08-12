@@ -1,0 +1,54 @@
+.conjuntosContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.Conjunto{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff87;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.Add{
+    background-color: #927cff87;
+}
+
+.Conjunto > img{
+    width: 100px;
+    height: 100px;
+}
+
+.BarraSeparadora{
+    width: 3px;
+    height: 100px;
+    background-color: var(--lineas);
+    margin-right: 10px
+}
+
+.PorPagar{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--lineas);
+}
+
+.PorPagar > p:nth-child(1){
+    color: red;
+}
+
+.PorPagar > p:nth-child(2) > b{
+    color: var(--parrafos);
+}
+
+.PorPagar > p:nth-child(2){
+    color: var(--botones);
+}

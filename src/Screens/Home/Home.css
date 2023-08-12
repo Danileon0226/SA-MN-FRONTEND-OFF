@@ -1,0 +1,40 @@
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 250px;
+  margin: 10px;
+  padding: 20px;
+  border: 2px solid var(--lineas);
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.card:hover{
+  background-color: rgb(242, 242, 242);
+}
+
+.card > img{
+  width: 100px;
+}
+
+.estado{
+  display: flex;
+}
+
+.activo{
+  color: var(--botones) !important;
+  margin-left: 5px;
+}
+
+.addEmpleado{
+  color: var(--botones);
+  text-decoration: none;
+}
+

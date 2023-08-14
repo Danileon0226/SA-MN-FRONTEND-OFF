@@ -1,4 +1,4 @@
-import userLogo from '../../assets/icons/user-5-line.svg'
+import userLogo from '../../assets/icons/emotion-line.svg'
 import Navbar from '../../Components/Navbar/Navbar'
 import { useEffect, useState } from 'react'
 

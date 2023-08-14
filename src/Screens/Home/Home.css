@@ -21,7 +21,7 @@
 }
 
 .card > img{
-  width: 100px;
+  width: 80px;
 }
 
 .estado{
@@ -38,3 +38,12 @@
   text-decoration: none;
 }
 
+.saludo{
+  display: flex;
+  align-items: center;
+}
+
+.saludo > img{
+  width: 40px;
+  margin-right: 10px;
+}

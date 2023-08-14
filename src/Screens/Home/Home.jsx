@@ -1,15 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Home.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cambiarInfo } from "../../Store/Slices";
-import userLogo from '../../assets/icons/user-5-line.svg'
+import userLogo from '../../assets/icons/emotion-line.svg'
+import luna from '../../assets/icons/moon-line.svg'
+import sol from '../../assets/icons/sun-line.svg'
+import moment from 'moment';
+import 'moment/locale/es';
+import ToolTip from "../../Components/ToolTip/ToolTip";
+
 
 function Home() {
   const dispatch = useDispatch()
   const [dataEmpleados, setDataEmpleados] = useState([])
   const empresaInfo = useSelector(state => state.negocioInfo)
+  const [saludo, setSaludo] = useState('');
+  const [imagenSaludo, setImagenSaludo] = useState('');
   const token = localStorage.getItem("token")
 
   useEffect(() => {
@@ -37,13 +45,42 @@ function Home() {
       .catch((err) => console.log(err))
     })
     .catch((err) => console.log(err))
+
+    moment.locale('es')
+    const ActualizarHora = () => {
+
+      const hora = moment().hour();
+
+      if (hora >= 5 && hora < 12) {
+        setSaludo('Buenos días');
+        setImagenSaludo(sol)
+      } else if (hora >= 12 && hora < 18) {
+        setSaludo('Buenas tardes');
+        setImagenSaludo(sol)
+      } else {
+        setSaludo('Buenas noches');
+        setImagenSaludo(luna)
+      }
+
+    }
+
+    ActualizarHora();
+    const interval = setInterval(ActualizarHora, 60000);
+
+    return () => {
+      clearInterval(interval);
+    };
+
   }, [])
 
 return (
     <div className="container">
       <Navbar />
       <div className="content">
-        <h1 className="clarito">Bienvenido {empresaInfo.nombreNegocio}</h1>
+        <div className="saludo">
+          <img src={imagenSaludo} alt="" />
+          <h1 className="clarito">{saludo} {empresaInfo.nombreNegocio}</h1>
+        </div>
         <div className="cardContainer">
           {dataEmpleados.length === 0 ? (
             <h4 className="sinEmpleados">No hay empleados activos. <Link className="addEmpleado" to="/empleados">Active ahora</Link></h4>
@@ -59,6 +96,7 @@ return (
                 <p className="clarito">C.C. {empleado.cedula}</p>
                 <p className="estado clarito">Estado: <p className="activo">{empleado.estado}</p></p>
                 <p className="estado clarito">Dinero que debe: <p className="activo">${empleado.total_que_debe}</p></p>
+                <ToolTip mensaje="Utilice este boton para agregar productos a la informacion del empleado" titulo="Empleado"/>
               </Link>
             ))
           )}

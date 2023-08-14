@@ -1,0 +1,33 @@
+.icono{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.icono > img {
+    width: 100%;
+}
+
+.icono > .mensajeContainer{
+    visibility: hidden;
+    width: 230px;
+    background-color: var(--fondos);
+    border-radius: 6px;
+    padding: 10px;
+    position: fixed;
+    text-align: justify;
+}
+
+.mensajeContainer > span{
+    font-size: 14px;
+    color: var(--parrafosLigth) !important;
+}
+
+.tooltipTitulo{
+    color: var(--parrafosLigth) !important;
+}
+
+.icono:hover > .mensajeContainer{
+    visibility: visible;
+}

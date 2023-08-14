@@ -17,7 +17,8 @@
 }
 
 .empleadoCard > img{
-    width: 100px;
+    margin-top: 10px;
+    width: 80px;
 }
 
 .empleadoCard > h3{

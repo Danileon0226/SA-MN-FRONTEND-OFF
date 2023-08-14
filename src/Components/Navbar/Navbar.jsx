@@ -2,6 +2,13 @@ import { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
+import homeIcon from "../../assets/icons/home-line.svg";
+import groupIcon from "../../assets/icons/group-line.svg";
+import adminIcon from "../../assets/icons/admin-line.svg";
+import cartIcon from "../../assets/icons/shopping-cart-line.svg";
+import settingsIcon from "../../assets/icons/settings-line.svg";
+import loginIcon from "../../assets/icons/login-box-line.svg";
+
 
 
 const Navbar = () => {
@@ -9,35 +16,35 @@ const Navbar = () => {
   const menuItems = [
     {
       text: "Inicio",
-      icon: "../../assets/icons/home-line.svg",
+      icon: homeIcon,
       ruta: "/inicio"
     },
     {
       text: "Empleados",
-      icon: "../../assets/icons/group-line.svg",
+      icon: groupIcon,
       ruta: "/empleados"
     },
     {
       text: "Perfil Administrador",
-      icon: "../../assets/icons/admin-line.svg",
+      icon: adminIcon,
       ruta: "/admin"
     },
     {
       text: "Ordenes activas",
-      icon: "../../assets/icons/shopping-cart-line.svg",
+      icon: cartIcon,
       ruta: "/ordenes"
     },
     {
       text: "Ajustes",
-      icon: "../../assets/icons/icons/settings-line.svg",
+      icon: settingsIcon,
       ruta: "/ajustes"
     },
   ];
 
   const logoutMedia = {
-    text: "Cerra sesion",
-    icon: "../../assets/icons/login-box-line.svg",
-  }
+    text: "Cerrar sesión",
+    icon: loginIcon,
+  };
 
 
   const CerrarSesion = () => {

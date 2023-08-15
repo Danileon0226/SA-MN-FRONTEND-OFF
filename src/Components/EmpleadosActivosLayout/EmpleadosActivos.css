@@ -1,0 +1,72 @@
+.empleadosLayout{
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+}
+
+.empleadosForm{
+    background-color: white;
+    height: 400px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.meserosContainer{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: center;
+}
+
+.empleadoSeleccionCard{
+    width: 130px;
+    height: 130px;
+    margin: 10px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #927cff87;
+    
+}
+
+.empleadoSeleccionCard:focus{
+    border: 2px solid black;
+}
+
+.empleadoSeleccionCard > p{
+    font-size: 18px;
+}
+
+.meserosContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.meserosContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.meserosContainer::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 4px;
+}
+
+.meserosContainer::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}

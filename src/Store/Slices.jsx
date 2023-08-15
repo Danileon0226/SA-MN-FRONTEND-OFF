@@ -10,7 +10,7 @@ export const conjuntosSlice = createSlice({
     },
     reducers: {
         agregarConjunto: (state, action) => {
-            const {id_mesero, id_producto, valor, cantidad } = action.payload;
+            const {id_producto, valor, cantidad } = action.payload;
             const valorTotalProducto = valor * cantidad;
 
             const conjuntoExistente = state.conjuntos.find(
@@ -23,13 +23,11 @@ export const conjuntosSlice = createSlice({
                 conjuntoExistente.valor * conjuntoExistente.cantidad;
             } else {
                 const nuevoConjunto = {
-                    id_mesero,
                     id_producto,
                     valor,
                     cantidad,
                     valorTotalProducto
                 };
-                state.id_mesero = id_mesero
                 state.conjuntos.push(nuevoConjunto);
             }
         },
@@ -78,6 +76,7 @@ export const conjuntosSlice = createSlice({
                     })
                     .then((data) => data.json())
                     .then(() =>{
+                        limpiarState()
                         window.location.reload()
                     })
                     .catch((err) => {
@@ -88,6 +87,23 @@ export const conjuntosSlice = createSlice({
             .catch((err) => {
                 console.log(err)
             })
+        },
+
+        quitarCantidad: (state, action) => {
+            const { id_producto, cantidad } = action.payload;
+            const conjuntoIndex = state.conjuntos.findIndex((conjunto) => conjunto.id_producto === id_producto);
+
+            if (conjuntoIndex !== -1) {
+                state.conjuntos[conjuntoIndex].cantidad -= cantidad;
+
+                if (state.conjuntos[conjuntoIndex].cantidad <= 0) {
+                    state.conjuntos.splice(conjuntoIndex, 1);
+                }
+            }
+        },
+
+        añadirIdEmpleado: (state, action) => {
+            state.id_mesero = action.payload
         }
     }
 });
@@ -108,12 +124,12 @@ export const negocioInfo = createSlice({
     }
 })
 
-
-
 export const {
     agregarConjunto,
     limpiarState,
-    enviarLaData
+    enviarLaData,
+    quitarCantidad,
+    añadirIdEmpleado
 } = conjuntosSlice.actions;
 
 export const{

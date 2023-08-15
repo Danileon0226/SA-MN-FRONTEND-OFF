@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react"
 import Close from '../../assets/icons/close-line.svg'
 import { useDispatch, useSelector } from "react-redux"
-import { agregarConjunto, enviarLaData } from "../../Store/Slices"
+import { agregarConjunto, enviarLaData, quitarCantidad } from "../../Store/Slices"
 
 import './ProductosLayout.css'
 
-export default function ProductosLayout({ id_mesero, cerrar }) {
+export default function ProductosLayout({  cerrar, abrirMesero }) {
     const [productos, setProductos] = useState([])
-    const [conjuntosLength, setConjuntosLength] = useState(0)
     const dispatch = useDispatch()
     const token = localStorage.getItem("token")
     const productosEnState = useSelector(state => state.Conjuntos.conjuntos)
@@ -31,26 +30,27 @@ export default function ProductosLayout({ id_mesero, cerrar }) {
         
     }, [cerrar]);
 
-    useEffect(() => {
-        if (productosEnState && productosEnState.length > 0) {
-            setConjuntosLength(productosEnState.length);
-        }
-    }, [productosEnState]);
 
-
-    const enviarAlState = (id_mesero, id_producto, valor, cantidad) => {
+    const enviarAlState = (id_producto, valor, cantidad) => {
         const conjunto ={
-            id_mesero,
             id_producto,
             valor,
             cantidad
         }
         dispatch(agregarConjunto(conjunto))
+        
     }
 
-    const finalizarCreacion = () => {
-        dispatch(enviarLaData())
+    const quitarDelState = (id_producto, cantidad) => {
+        const conjunto ={
+            id_producto,
+            cantidad
+        }
+        dispatch(quitarCantidad(conjunto))
+        
     }
+    
+    console.log(productosEnState)
 
     return (
         <div className="ProductosLayout">
@@ -59,19 +59,30 @@ export default function ProductosLayout({ id_mesero, cerrar }) {
                     <button onClick={cerrar}><img src={Close} alt="" /></button>
                 </div>
                 <div className="ProductosContainer">
-                    {productos.map((producto, index) => (
-                        <button onClick={() => enviarAlState(id_mesero, producto.id_producto, parseFloat(producto.valor_producto), 1)} key={index} className="productoCard">
-                            <div className="ImgProductContainer">
-                                <img src={producto.imagen_producto_url} alt="" />
+                    {productos.map((producto, index) => {
+
+                        const conjuntoEnEstado = productosEnState.find(conjunto => conjunto.id_producto === producto.id_producto);
+                        const cantidadAcumulada = conjuntoEnEstado ? conjuntoEnEstado.cantidad : 0;
+
+                        return (
+                            <div key={index} className="productoCard">
+                                <div className="ImgProductContainer">
+                                    <img src={producto.imagen_producto_url} alt="" />
+                                </div>
+                                <p className="NombreProducto">{producto.nombre_producto}</p>
+                                <p className="EnInventario"><b>En inventario: </b> {producto.stock}</p>
+                                <p className="PrecioUnidad">${producto.valor_producto}</p>
+                                <div className="cantidadBotones">
+                                    <button onClick={() => quitarDelState(producto.id_producto, 1)}>-</button>
+                                        <p>{cantidadAcumulada}</p>
+                                    <button onClick={() => enviarAlState(producto.id_producto, parseFloat(producto.valor_producto), 1)}>+</button>
+                                </div>
                             </div>
-                            <p className="NombreProducto">{producto.nombre_producto}</p>
-                            <p className="EnInventario"><b>En inventario: </b> {producto.stock}</p>
-                            <p className="PrecioUnidad">${producto.valor_producto}</p>
-                        </button>
-                    ))}
+                        )
+                    })}
                 </div>
                 <div className="LayoutControles">
-                    <button disabled={conjuntosLength < 1 ? true: false} onClick={() => finalizarCreacion()}>Agregar al conjunto</button>
+                    <button disabled={productosEnState.length === 0} onClick={() => abrirMesero()}>Seleccionar Mesero</button>
                 </div>
             </div>
         </div>

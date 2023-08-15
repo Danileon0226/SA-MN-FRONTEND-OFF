@@ -31,3 +31,10 @@
 .icono:hover > .mensajeContainer{
     visibility: visible;
 }
+
+.tooltipContainer{
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    z-index: 2;
+}

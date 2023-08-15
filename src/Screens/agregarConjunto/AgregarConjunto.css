@@ -21,6 +21,7 @@
 
 .Add{
     background-color: #927cff87;
+    position: relative;
 }
 
 .Conjunto > img{
@@ -35,20 +36,23 @@
     margin-right: 10px
 }
 
-.PorPagar{
+.cantidad{
+    width: 150px !important;
     display: flex;
     flex-direction: column;
     border: 2px solid var(--lineas);
 }
 
 .PorPagar > p:nth-child(1){
-    color: red;
-}
-
-.PorPagar > p:nth-child(2) > b{
     color: var(--parrafos);
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .PorPagar > p:nth-child(2){
-    color: var(--botones);
+    color: red;
 }
+
+/* .PorPagar > p:nth-child(2){
+    color: var(--botones);
+} */

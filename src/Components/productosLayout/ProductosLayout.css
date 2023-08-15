@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
+    z-index: 4;
 }
 
 .ProductosForm{
@@ -51,18 +52,15 @@
     width: 200px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background: #927cff87;
     margin: 10px;
     padding: 10px;
     border-radius: 12px;
     align-items: center;
-    cursor: pointer;
     border: none;
 }
 
-.ProductosContainer > .productoCard:hover{
-    background: #6858b687;
-}
 
 .ProductosContainer > .productoCard > .ImgProductContainer{
     width: 100%;
@@ -126,4 +124,27 @@
 
 .ProductosContainer::-webkit-scrollbar-thumb:hover {
     background: #c1c1c1;
+}
+
+.cantidadBotones{
+    align-self: flex-end;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gainsboro;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.cantidadBotones > button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--botones);
+    color: var(--parrafosLigth);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
 }

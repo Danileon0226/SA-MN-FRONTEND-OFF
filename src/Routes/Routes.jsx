@@ -4,6 +4,7 @@ import Login from "../Screens/Login/Login";
 import ProtectorRuta from "../middleware/middleware";
 import Empleados from "../Screens/Empleados/Empleados";
 import AgregarConjunto from "../Screens/agregarConjunto/AgregarConjunto";
+import PanelAdministrador from "../Screens/PanelAdministrador/PanelAdministrador";
 
 export default function Rutas() {
   return (
@@ -13,24 +14,39 @@ export default function Rutas() {
         <Route path="*" element={<Login />} />
         <Route path="/" element={<Login />} />
 
-
-
         {/* RUTAS PRIVADAS */}
-        <Route path="inicio" element={
-          <ProtectorRuta>
-            <Home />
-          </ProtectorRuta>
-        } />
-        <Route path="empleados" element={
-          <ProtectorRuta>
-            <Empleados />
-          </ProtectorRuta>
-        } />
-        <Route path="agregarConjunto/:id_empleado" element={
-          <ProtectorRuta>
-            <AgregarConjunto />
-          </ProtectorRuta>
-        } />
+        <Route
+          path="inicio"
+          element={
+            <ProtectorRuta>
+              <Home />
+            </ProtectorRuta>
+          }
+        />
+        <Route
+          path="empleados"
+          element={
+            <ProtectorRuta>
+              <Empleados />
+            </ProtectorRuta>
+          }
+        />
+        <Route
+          path="agregarConjunto/:id_empleado"
+          element={
+            <ProtectorRuta>
+              <AgregarConjunto />
+            </ProtectorRuta>
+          }
+        />
+        <Route
+          path="admin"
+          element={
+            <ProtectorRuta>
+              <PanelAdministrador/>
+            </ProtectorRuta>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

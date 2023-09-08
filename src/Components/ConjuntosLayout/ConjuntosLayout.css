@@ -1,0 +1,169 @@
+.conjuntosLayoutContainer{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.364);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conjuntosLayoutForm{
+    width: 800px;
+    height: 80vh;
+    background: white;
+    padding: 12px;
+}
+
+.productosCardContainer{
+    width: 100%;
+    height: 85%;
+    margin-top: 10px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.productoLayoutCard{
+    width: 220px;
+    height: 400px;
+    margin: 10px;
+    background: #927cff87;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.productoLayoutCard > .imgProducto{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productoLayoutCard > .imgProducto > img{
+    width: 100px;
+}
+
+.productoLayoutCard > .productoInfo{
+    width: 100%;
+    text-align: center;
+}
+
+.eliminarBoton{
+    width: 100%;
+}
+
+.eliminarBoton > button{
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    color: var(--parrafos);
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    border: 2px solid var(--lineas);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagarBtn{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.pagarBtn > button{
+    border: none;
+    border-radius: 6px;
+    background-color: var(--botones);
+    color: white;
+    padding: 7px 10px;
+    cursor: pointer;
+    margin: 10px 7px;
+}
+
+.pagarBtn > button:disabled{
+    background-color: #8c76fb;
+    color: rgb(193, 193, 193);
+    cursor: initial;
+}
+
+
+.productosCardContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.productosCardContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.productosCardContainer::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 4px;
+}
+
+.productosCardContainer::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}
+
+.centrados{
+    text-align: center;
+}
+
+.accionesBtn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.accionesBtn > button{
+    height: 30px;
+    margin: 3px 0;
+}
+
+.accionesBtn > button:nth-child(1) {
+    background-color: rgb(5, 195, 5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+}
+
+.accionesBtn > button:nth-child(1):disabled {
+    background-color: rgb(95, 160, 95);
+    color: rgb(172, 172, 172);
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    cursor: initial;
+}
+
+.accionesBtn > button:nth-child(2) {
+    background-color: rgb(157, 33, 33);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+}
+
+.accionesBtn > button:nth-child(2):disabled {
+    background-color: rgb(174, 81, 81);
+    color: rgb(172, 172, 172);
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    position: relative;
+    cursor: initial;
+}

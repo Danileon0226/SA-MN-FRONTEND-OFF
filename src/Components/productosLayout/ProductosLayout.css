@@ -148,3 +148,13 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.cantidadBotones > button:disabled{
+    background-color: #8c76fb;
+    color: rgb(193, 193, 193);
+    cursor: initial;
+}
+
+.NoHay{
+    color: red;
+}

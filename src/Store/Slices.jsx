@@ -36,59 +36,6 @@ export const conjuntosSlice = createSlice({
             state.conjuntos = action.payload
         },
 
-        enviarLaData: async(state) => {
-            const sumaTotal = state.conjuntos.reduce((acumulador, objeto) => acumulador + objeto.valorTotalProducto, 0);
-            const bodyConjunto = {
-                id_mesero: state.id_mesero,
-                valor_total_conjunto: `${sumaTotal}`
-            }
-
-            await fetch(`http://localhost:3000/api/crear_conjunto`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "authorization": `Bearer ${state.token}`,
-                    "Cache-Control": "no-cache",
-                    "Pragma": "no-cache",
-                },
-                body: JSON.stringify(bodyConjunto)
-            })
-            .then((data) => data.json())
-            .then((response) => {
-                state.conjuntos.forEach((producto) => {
-
-                    const bodyProducto = {
-                        id_producto: producto.id_producto,
-                        id_conjunto: response.result[0].id_conjunto,
-                        cantidad_por_unidad: producto.cantidad,
-                        precio_sumado: producto.valorTotalProducto
-                    }
-
-                    fetch(`http://localhost:3000/api/enviar_producto_conjunto`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "authorization": `Bearer ${state.token}`,
-                            "Cache-Control": "no-cache",
-                            "Pragma": "no-cache",
-                        },
-                        body: JSON.stringify(bodyProducto)
-                    })
-                    .then((data) => data.json())
-                    .then(() =>{
-                        limpiarState()
-                        window.location.reload()
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-                })
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        },
-
         quitarCantidad: (state, action) => {
             const { id_producto, cantidad } = action.payload;
             const conjuntoIndex = state.conjuntos.findIndex((conjunto) => conjunto.id_producto === id_producto);
@@ -124,10 +71,94 @@ export const negocioInfo = createSlice({
     }
 })
 
+export const actualizarConjunto = createSlice({
+    name: "ActualizarConjunto",
+    initialState: {
+        id_conjunto: "",
+        productosActualizados: []
+    },
+    reducers:{
+        agregarCantidad: (state, action) => {
+            const {modo, id_producto, valor, cantidad } = action.payload;
+            const valorTotalProducto = valor * cantidad;
+    
+            const conjuntoExistente = state.productosActualizados.find(
+                (productosActualizados) => productosActualizados.id_producto === id_producto
+            );
+    
+            if (conjuntoExistente) {
+                conjuntoExistente.cantidad += cantidad;
+                conjuntoExistente.valorTotalProducto =
+                conjuntoExistente.valor * conjuntoExistente.cantidad;
+            } else {
+                const nuevoConjunto = {
+                    modo,
+                    id_producto,
+                    valor,
+                    cantidad,
+                    valorTotalProducto
+                };
+                state.productosActualizados.push(nuevoConjunto);
+            }
+
+        },
+
+        quitarCantidadState: (state, action) => {
+            const { id_producto, cantidad } = action.payload;
+            const conjuntoIndex = state.productosActualizados.findIndex((conjunto) => conjunto.id_producto === id_producto);
+
+            if (conjuntoIndex !== -1) {
+                state.productosActualizados[conjuntoIndex].cantidad -= cantidad;
+
+                if (state.productosActualizados[conjuntoIndex].cantidad <= 0) {
+                    state.productosActualizados.splice(conjuntoIndex, 1);
+                }
+            }
+        },
+
+        eliminarProducto: (state, action) => {
+
+        },
+        
+        agregarId: (state, action) => {
+            const id = action.payload
+            state.id_conjunto = id;
+        },
+
+        limpiarEstado: (state) => {
+            state.id_conjunto = ""
+            state.productosActualizados = []
+        }
+    }
+})
+
+
+export const MaxMinLayoutInfo = createSlice({
+    name: "maxminLayoutInfo",
+    initialState: {
+        modo: "",
+        id_conjunto: "",
+        id_producto: "",
+        cantidadOrdenada: 0,
+        valor: 0,
+        stock: 0,
+    },
+    reducers: {
+        activarLayout: (state, actions) => {
+            const {modo, id_conjunto, id_producto, cantidadOrdenada, valor, stock} = actions.payload
+
+            state.modo = modo
+            state.id_conjunto = id_conjunto
+            state.id_producto = id_producto
+            state.cantidadOrdenada = cantidadOrdenada
+            state.valor = valor
+            state.stock = stock
+        }
+    }
+})
 export const {
     agregarConjunto,
     limpiarState,
-    enviarLaData,
     quitarCantidad,
     añadirIdEmpleado
 } = conjuntosSlice.actions;
@@ -135,3 +166,14 @@ export const {
 export const{
     cambiarInfo
 } = negocioInfo.actions
+
+export const {
+    quitarCantidadState,
+    agregarCantidad,
+    limpiarEstado,
+    agregarId
+} = actualizarConjunto.actions
+
+export const {
+    activarLayout
+} = MaxMinLayoutInfo.actions

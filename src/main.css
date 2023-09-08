@@ -45,6 +45,7 @@ h1 {
 .content {
   width: 100%;
   padding: 20px;
+  position: relative;
 }
 
 .sinEmpleados{
@@ -53,6 +54,14 @@ h1 {
 
 .clarito{
   color: var(--parrafos);
+}
+
+.seccionTitle{
+  margin: 10px 20px;
+}
+
+.sinPadding{
+  padding: 0;
 }
 
 
